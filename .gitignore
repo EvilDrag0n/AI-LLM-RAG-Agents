@@ -8,3 +8,4 @@ __pycache__/
 .venv/
 venv/
 *.log
+/P2_LangChainRag开发/history/

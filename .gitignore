@@ -9,3 +9,4 @@ __pycache__/
 venv/
 *.log
 /P2_LangChainRag开发/history/
+/P2_LangChainRag开发/chroma_db/

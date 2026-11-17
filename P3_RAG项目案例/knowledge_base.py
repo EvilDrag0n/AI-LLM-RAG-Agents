@@ -4,14 +4,11 @@
 
 import os
 from datetime import datetime
-from importlib.metadata import metadata
-
 import config_data as config
 import hashlib
 from langchain_chroma import Chroma
 from langchain_community.embeddings import DashScopeEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-
 
 def check_md5(str_md5: str):
     """检查MD5是否已保存"""
@@ -72,10 +69,16 @@ class KnowledgeBaseService(object):
     def upload_by_str(self, data:str, filename):
         """将传入的字符串进行向量化，并存入向量数据库中"""
         #先校验文本知识库是否已存在
+        result={
+            "isSuccess":False,
+            "msg":"【失败】存入知识库四百"
+        }
+
         md5 = get_str_md5(data)
 
         if check_md5(md5):
-            return "【跳过】知识库已存在该内容"
+            result["msg"] = "【跳过】知识库已存在该内容"
+            return result
 
         text_chunks = []
         if len(data) >= config.MAX_SPLIT_CHAR_NUMBER:
@@ -98,8 +101,9 @@ class KnowledgeBaseService(object):
 
         #保存MD5
         save_md5(md5)
-
-        return "【成功】内容以存入知识库"
+        result["msg"] = "【成功】内容以存入知识库"
+        result["isSuccess"] = True
+        return result
 
 
 if __name__ == '__main__':

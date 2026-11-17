@@ -36,6 +36,6 @@ CSV、JSON、文本和 PDF 加载示例使用 `P2_LangChainRag开发/data/` 下�
 
 向量存储示例同样从 `P2_LangChainRag开发/` 目录运行，并需要可用的 DashScope 嵌入服务。Chroma 示例需要安装 `langchain-chroma` 和 `chromadb`，数据保存在已忽略的 `chroma_db/` 目录中。检索构建提示词示例使用该目录中的已有数据，并调用 DeepSeek；其文本入库代码默认被注释。
 
-P3 页面需要安装 `streamlit`，从 `P3_RAG项目案例/` 目录运行 `python -m streamlit run app_file_uploader.py`。目前页面只预览 UTF-8 TXT 文件，尚未连接知识库入库服务。`knowledge_base.py` 使用 `langchain-chroma`、`chromadb`、`langchain-community`、`langchain-text-splitters` 和 `dashscope`，需要配置可用的 DashScope API 密钥；其直接运行入口会写入测试文本。数据库与用于去重的 `file_md5.txt` 保存在当前工作目录，均为本地运行数据。
+P3 页面需要安装 `streamlit`、`langchain-chroma`、`chromadb`、`langchain-community`、`langchain-text-splitters` 和 `dashscope`，并配置可用的 DashScope API 密钥。从 `P3_RAG项目案例/` 目录运行 `python -m streamlit run app_file_uploader.py`。页面接收并预览 UTF-8 TXT 文件，上传时调用知识库服务写入 Chroma；重复内容根据 MD5 记录跳过。`knowledge_base.py` 的直接运行入口会写入测试文本。数据库与用于去重的 `file_md5.txt` 保存在当前工作目录，均为本地运行数据。
 
 `P2_LangChainRag开发/14自定义File长期会话记忆.py` 演示自定义文件会话历史，将消息以 UTF-8 JSON 保存到当前工作目录下的 `history/<session_id>` 文件，中文直接显示。目录会自动创建；当前实现每次写入会覆盖为本轮消息，完整历史的追加逻辑仍待完善。示例当前仅启用询问宠物总数的调用，可自行取消前两轮调用的注释以写入示例信息。

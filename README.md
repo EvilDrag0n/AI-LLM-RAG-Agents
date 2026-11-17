@@ -8,6 +8,9 @@
 | --- | --- |
 | `P1_OpenAi基础库的使用/` | API 密钥、聊天接口、流式输出和手动传入对话历史。 |
 | `P2_LangChainRag开发/` | 余弦相似度、通义模型与嵌入、消息、提示词模板、链、输出解析器、会话历史、文档加载与分割，以及向量存储和检索。 |
+| `P3_RAG项目案例/` | Streamlit 文本上传预览、知识库入库示例，以及衣服尺码、裤子尺码和款式颜色与季节天气搭配的三份 TXT 示例资料。 |
+
+`P3_RAG项目案例/data/` 中的三份 TXT 文件使用 UTF-8 编码，可作为 RAG 文档加载和检索的示例数据。尺码表为模拟参考，不对应具体品牌；内容包含身高体重、人体围度、选码规则、款式颜色和天气搭配建议。
 
 ## 运行示例
 
@@ -32,5 +35,7 @@ python "P2_LangChainRag开发/01余弦相似度.py"
 CSV、JSON、文本和 PDF 加载示例使用 `P2_LangChainRag开发/data/` 下的示例数据，请从 `P2_LangChainRag开发/` 目录运行；JSON 加载示例需要安装 `jq` Python 包，PDF 加载示例需要安装 `pypdf` Python 包。
 
 向量存储示例同样从 `P2_LangChainRag开发/` 目录运行，并需要可用的 DashScope 嵌入服务。Chroma 示例需要安装 `langchain-chroma` 和 `chromadb`，数据保存在已忽略的 `chroma_db/` 目录中。检索构建提示词示例使用该目录中的已有数据，并调用 DeepSeek；其文本入库代码默认被注释。
+
+P3 页面需要安装 `streamlit`，从 `P3_RAG项目案例/` 目录运行 `python -m streamlit run app_file_uploader.py`。目前页面只预览 UTF-8 TXT 文件，尚未连接知识库入库服务。`knowledge_base.py` 使用 `langchain-chroma`、`chromadb`、`langchain-community`、`langchain-text-splitters` 和 `dashscope`，需要配置可用的 DashScope API 密钥；其直接运行入口会写入测试文本。数据库与用于去重的 `file_md5.txt` 保存在当前工作目录，均为本地运行数据。
 
 `P2_LangChainRag开发/14自定义File长期会话记忆.py` 演示自定义文件会话历史，将消息以 UTF-8 JSON 保存到当前工作目录下的 `history/<session_id>` 文件，中文直接显示。目录会自动创建；当前实现每次写入会覆盖为本轮消息，完整历史的追加逻辑仍待完善。示例当前仅启用询问宠物总数的调用，可自行取消前两轮调用的注释以写入示例信息。

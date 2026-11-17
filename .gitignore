@@ -9,4 +9,5 @@ __pycache__/
 venv/
 *.log
 /P2_LangChainRag开发/history/
-/P2_LangChainRag开发/chroma_db/
+/**/chroma_db/
+/P3_RAG项目案例/file_md5.txt

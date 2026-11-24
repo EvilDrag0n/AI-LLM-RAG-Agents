@@ -4,6 +4,9 @@
 从国内清华安装
 pip install streamlit -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+运行
+streamlit run .\app_file_uploader.py
+
 """
 import time
 

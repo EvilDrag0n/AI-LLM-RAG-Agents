@@ -71,7 +71,7 @@ class KnowledgeBaseService(object):
         #先校验文本知识库是否已存在
         result={
             "isSuccess":False,
-            "msg":"【失败】存入知识库四百"
+            "msg":"【失败】存入知识库失败"
         }
 
         md5 = get_str_md5(data)

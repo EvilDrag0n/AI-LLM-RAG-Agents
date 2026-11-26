@@ -8,6 +8,6 @@ __pycache__/
 .venv/
 venv/
 *.log
-/P2_LangChainRag开发/history/
+/*/history/
 /**/chroma_db/
 /P3_RAG项目案例/file_md5.txt

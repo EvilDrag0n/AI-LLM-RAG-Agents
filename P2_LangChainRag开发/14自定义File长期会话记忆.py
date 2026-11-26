@@ -19,9 +19,10 @@ class FileMessageHistory(BaseChatMessageHistory):
 
     def add_messages(self, messages: Sequence[BaseMessage]) -> None:
         # 新消息追加历史消息
-        self.messages.extend(messages)
+        all_messages = self.messages
+        all_messages.extend(messages)
 
-        dict_messages = messages_to_dict(messages)
+        dict_messages = messages_to_dict(all_messages)
 
         # 写入文件
         with open(self.message_path, 'w', encoding='utf-8') as f:
